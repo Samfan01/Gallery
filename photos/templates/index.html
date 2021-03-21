@@ -9,22 +9,6 @@
         <h1 class="text-center">Welcome to My Personal Gallery.</h1>
 
     </div>
-
-   <div class="row">
-        {% for photo_item in photos %}
-        <div class="col-md-4">
-        <div class="card bg-dark text-white">
-            <img src="{{photo_item.photo.url}}" class="card-img" alt="..." style="height: 350px;">
-            <div class="card-img-overlay">
-                <h5 class="card-title">{{photo_item.photo_location}}</h5>
-                
-                <p class="card-text">{{photo_item.upload_date}}</p>
-            </div>
-        </div>
-        <br>
-        </div>
-        {% endfor %}
-        </div>
     <br>
     <h2 class="text-center">Choose a location to view the photos taken there.</h2>
     <div class="container-fluid">
@@ -48,6 +32,22 @@
 
         </div>
     </div>
+<br>
+   <div class="row">
+        {% for photo_item in photos %}
+        <div class="col-md-4">
+        <div class="card bg-dark text-white">
+            <img src="{{photo_item.photo.url}}" class="card-img" alt="..." style="height: 350px;">
+            <div class="card-img-overlay">
+                <h5 class="card-title">{{photo_item.photo_location}}</h5>
+                
+                <p class="card-text">{{photo_item.upload_date}}</p>
+            </div>
+        </div>
+        <br>
+        </div>
+        {% endfor %}
+        </div>
     <br><br>
     <hr>
     <hr>
