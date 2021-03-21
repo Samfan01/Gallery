@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+<div class="row">
+    {% for photo_item in photos %}
+    <div class="col-md-4">
+        <div class="card bg-dark text-white">
+            <img src="{{photo_item.photo.url}}" class="card-img" alt="..." style="height: 350px;">
+            <div class="card-img-overlay">
+                <h5 class="card-title">{{photo_item.photo_location}}</h5>
+
+                <p class="card-text">{{photo_item.upload_date}}</p>
+            </div>
+        </div>
+        <br>
+    </div>
+    {% endfor %}
+</div>

@@ -10,10 +10,10 @@ class Photo(models.Model):
     upload_date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.photo_location 
+        return self.photo_category 
  
     class Meta:
-        ordering = ['photo_location']
+        ordering = ['photo_category']
     
     def save_photo(self):
         self.save()
@@ -25,5 +25,9 @@ class Photo(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         photos = cls.objects.filter(photo_category__icontains=search_term)
+        return photos
+    @classmethod
+    def show_by_location(cls,photo_location):
+        photos = cls.objects.filter(photo_location)
         return photos
            
