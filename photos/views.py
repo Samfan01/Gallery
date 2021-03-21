@@ -8,3 +8,4 @@ def home(request):
     photo = Photo.photo_info()
     
     return render(request,'index.html',{'photos':photo})
+def
