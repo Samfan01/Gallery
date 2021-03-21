@@ -8,4 +8,15 @@ def home(request):
     photo = Photo.photo_info()
     
     return render(request,'index.html',{'photos':photo})
-def
+def search_results(request):
+    
+    if 'photo' in request.GET and request.GET['photo']:
+        search_term request.GET.get('photo')
+        searched_photos = Photo.search_by_category(search_term)
+        message = f'{search_term}'
+        
+        return render(request, 'search.html',{'message':message,'photos':searched_photos})
+    
+    else:
+        message = 'You have not searched any category!!'
+        return render(request,'search.html',{'message':message})
