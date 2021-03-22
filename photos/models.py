@@ -5,15 +5,15 @@ from django.db import models
 
 class Photo(models.Model):
     photo = models.ImageField(upload_to = 'photos/')
-    photo_location = models.CharField(max_length = 60)
-    photo_category = models.CharField(max_length = 60)
+    name = models.CharField(max_length = 60)
+    description = models.CharField(max_length = 60)
     upload_date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.photo_category 
+        return self.name 
  
     class Meta:
-        ordering = ['photo_category']
+        ordering = ['name']
     
     def save_photo(self):
         self.save()
@@ -22,12 +22,16 @@ class Photo(models.Model):
     def photo_info(cls):
         photos = cls.objects.all()
         return photos
-    @classmethod
-    def search_by_category(cls,search_term):
-        photos = cls.objects.filter(photo_category__icontains=search_term)
-        return photos
-    @classmethod
-    def show_by_location(cls,photo_location):
-        photos = cls.objects.filter(photo_location)
-        return photos
-           
+    # @classmethod
+    # def search_by_category(cls,search_term):
+    #     photos = cls.objects.filter(photo_category__icontains=search_term)
+    #     return photos
+    # @classmethod
+    # def show_by_location(cls,photo_location):
+    #     photos = cls.objects.filter(photo_location)
+    #     return photos
+class Category(models.Model):
+    category = models.CharField(max_field = 30)
+    
+    def __str__(self):
+        return self.category
