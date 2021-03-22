@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Photo
+from .models import Photo,Category
 # Create your views here.
 
 def home(request):
@@ -11,12 +11,12 @@ def home(request):
 
 def search_results(request):
     
-    if 'photo' in request.GET and request.GET['photo']:
-        search_term = request.GET.get('photo')
-        searched_photos = Photo.search_by_category(search_term)
+    if 'category' in request.GET and request.GET['category']:
+        search_term = request.GET.get('category')
+        searched_photos = Category.search_by_category(search_term)
+        photo = Photo.search_by_category(search_term)
         message = f'{search_term}'
-        
-        return render(request, 'search.html',{'message':message,'photos':searched_photos})
+        return render(request, 'search.html',{'message':message,'photos':photo})
     
     else:
         message = 'You have not searched any category!!'
