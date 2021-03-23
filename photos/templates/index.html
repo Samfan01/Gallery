@@ -71,13 +71,13 @@
                         <img src="{{photo_item.photo.url}}" alt="{{photo_item.name}}" class="img-fluid" height="100%"
                             width="100%">
                         <p class="text-center">{{photo_item.description}}</p>
-                        <!-- <p class="image-location">Location : {{image.location}}</p>
-                            <p class="image-location">Category : {{image.category}}</p>
-                            <p class="image-location">Date on : {{ image.date }}</p> -->
+                        <p class="image-location">Location : {{photo_item.location}}</p>
+                            <p class="image-location">Category : {{photo_item.category}}</p>
+                            <p class="image-location">Date on : {{ photo_item.upload_date }}</p>
                     </div>
                     <div class="modal-footer">
                         <input class="form-control input-lg" type="text" value="{{photo_item.photo.url}}"
-                            id="{{photo_item.id}}.url">
+                            id="copy"><button onclick="myFunction()">Copy Photo url</button>
                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close
                         </button>
 
@@ -115,32 +115,25 @@
                 </div>
             </div>
         </div>
-        <!-- <script>
-    function run() {
-        show_results()
-    }
-    // Get the modal
-    var modal = document.getElementById("{{ photo_item.id }}");
+        <script>
+            
+            function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("copy");
 
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById("{{ photo_item.id }}");
-    var modalImg = document.getElementById("{{ photo_item.id }}");
-    var captionText = document.getElementById("caption");
-    img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-    }
+  /* Select the text field */
+  copyText.value.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
+   
 
-</script> -->
+</script>
 
 
 
