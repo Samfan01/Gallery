@@ -21,7 +21,7 @@ As a user of the website you will be able to:
 3.View image details on a modal
 
 ## Behaviour Driven Development (BDD)
-|Behaviour 	           |    Input 	                     |       Output                                 |
+|Behaviour 	                                                       |    Input 	                     |       Output                                 |
 |------------------------------------------------------------|:--------------------------------------------:|
 |Page loads	           |                                 |     photos are displayed on screen           | 
 |Search photos by category |Enter category on search bar     | Photos from searched category are displayed. |
