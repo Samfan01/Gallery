@@ -22,9 +22,9 @@ def search_results(request):
         message = 'You have not searched any category!!'
         return render(request,'search.html',{'message':message})
 
-def show_results(request):
+def show_results(request,location_name):
     
-    photo = Photo.show_by_location()
+    photo = Photo.search_by_location(location_name)
     
     return render(request,'location.html',{'photos':photo})
     

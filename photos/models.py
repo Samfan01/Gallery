@@ -33,7 +33,7 @@ class Photo(models.Model):
    
     @classmethod
     def search_by_location(cls,location_name):
-        photos = cls.objects.filter(location_name__location_name__icontains=location_name)
+        photos = cls.objects.filter(location__location_name__icontains=location_name)
         return photos
     
 class Category(models.Model):
