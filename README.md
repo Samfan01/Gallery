@@ -20,12 +20,14 @@ As a user of the website you will be able to:
 2.Search for specific images according to category
 3.View image details on a modal
 
-
 ## Behaviour Driven Development (BDD)
-|Behaviour 	           |    Input 	                 |       Output          |
-|----------------------------------------------|:-----------------------------------:|-----------------------------:|       
-|Page loads	                           |   .                           |       photos are displayed  |                        |
-
+|Behaviour 	           |    Input 	                     |       Output                                 |
+|------------------------------------------------------------|:--------------------------------------------:|
+|Page loads	           |                                 |     photos are displayed on screen           | 
+|Search photos by category |Enter category on search bar     | Photos from searched category are displayed. |
+|View Photos from location |Press button of desired location | Photos from location are displayed.          |
+|View Photo details        |click photo you want details of. | A modal with photo details zooms out.        |
+|Copy Photo link           |click a copy url button on modal | An alert affirming the url is copied pops    |
 
 ### Installing
 
