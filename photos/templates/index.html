@@ -2,17 +2,21 @@
 {% load bootstrap3 %}
 {% load static %}
 
+{% block content %}
+
+{{ block.super }}
+
 {% block styles %}
 {% bootstrap_css %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 
 {% endblock %}
-{% block content %}
-{{ block.super }}
+
+
 
 
 <div class="container-fluid">
@@ -46,72 +50,81 @@
     <br>
     <div class="row">
         {% for photo_item in photos %}
-        <div class="col-md-4">
-            <div class="card bg-dark text-white">
-                <img id="myImg" src="{{photo_item.photo.url}}" class="card-img" alt="..." style="height: 350px;">
+       
+            <div class="col-md-4">
+                <img src="{{photo_item.photo.url}}" alt="{{photo_item.name}}" class="card-img" height="40%"
+                    width="100%" data-toggle="modal" data-target="#{{photo_item.id}}">
             </div>
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
 
-                <!-- The Close Button -->
-                <span class="close">&times;</span>
 
-                <!-- Modal Content (The Image) -->
-                <div class="modal-content">
-                    <div class="card">
-                        <img id="img01" style="height: 550px;">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{photo_item.name}}</h5>
-                            <p class="card-text">{{photo_item.description}}</p>
-                            <p>{{photo_item.photo.url}}</p>
-                        </div>
+        <div class="modal fade " id="{{photo_item.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content modalcard">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageheader">{{photo_item.name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body card3">
+                        <img src="{{photo_item.photo.url}}" alt="{{photo_item.name}}" class="img-fluid" height="100%"
+                            width="100%">
+                        <p class="text-center">{{photo_item.description}}</p>
+                        <!-- <p class="image-location">Location : {{image.location}}</p>
+                            <p class="image-location">Category : {{image.category}}</p>
+                            <p class="image-location">Date on : {{ image.date }}</p> -->
+                    </div>
+                    <div class="modal-footer">
+                        <input class="form-control input-lg" type="text" value="{{photo_item.photo.url}}"
+                            id="{{photo_item.id}}.url">
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close
+                        </button>
+
+                    </div>
+                    <br>
                 </div>
-                <!-- Modal Caption (Image Text) -->
-                <div id="caption"></div>
+                </div>
             </div>
-            <br>
+            {% endfor %}
+            <br><br>
+            <hr>
+            <hr>
+            <div id="footer">
+                <h1 class="text-center">Contact Me</h1>
+                <br>
+                <div class="col-md-4">
+                    <h3>facebook</h3>
+                    <img src="/static/images/facebook.png" alt="">
+                    <p>Find me on facebook @DouglasSamphan.</p>
+
+                </div>
+                <div class="col-md-4">
+                    <h3>twitter</h3>
+                    <img src="/static/images/twitter.png" alt="">
+                    <p>Join me on twitter @dsamfan</p>
+
+
+                </div>
+                <div class="col-md-4">
+                    <h3>Pinterest</h3>
+                    <img src="/static/images/pinterest.png" alt="">
+                    <p>See my Photos on pinterest @dsamfan</p>
+
+
+                </div>
+            </div>
         </div>
-        {% endfor %}
-    </div>
-    <br><br>
-    <hr>
-    <hr>
-    <div id="footer">
-        <h1 class="text-center">Contact Me</h1>
-        <br>
-        <div class="col-md-4">
-            <h3>facebook</h3>
-            <img src="/static/images/facebook.png" alt="">
-            <p>Find me on facebook @DouglasSamphan.</p>
-
-        </div>
-        <div class="col-md-4">
-            <h3>twitter</h3>
-            <img src="/static/images/twitter.png" alt="">
-            <p>Join me on twitter @dsamfan</p>
-
-
-        </div>
-        <div class="col-md-4">
-            <h3>Pinterest</h3>
-            <img src="/static/images/pinterest.png" alt="">
-            <p>See my Photos on pinterest @dsamfan</p>
-
-
-        </div>
-    </div>
-</div>
-<script>
+        <!-- <script>
     function run() {
         show_results()
     }
     // Get the modal
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("{{ photo_item.id }}");
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById("myImg");
-    var modalImg = document.getElementById("img01");
+    var img = document.getElementById("{{ photo_item.id }}");
+    var modalImg = document.getElementById("{{ photo_item.id }}");
     var captionText = document.getElementById("caption");
     img.onclick = function () {
         modal.style.display = "block";
@@ -127,11 +140,11 @@
         modal.style.display = "none";
     }
 
-</script>
+</script> -->
 
 
 
 
 
 
-{% endblock%}
+        {% endblock%}
