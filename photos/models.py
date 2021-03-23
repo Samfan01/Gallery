@@ -28,7 +28,7 @@ class Photo(models.Model):
          
     @classmethod
     def search_by_category(cls,search_term):
-        photos = cls.objects.filter(category=search_term)
+        photos = cls.objects.filter(category__category__icontains =search_term)
         return photos
    
     # @classmethod
@@ -59,3 +59,8 @@ class Location(models.Model):
     
     class Meta:
         ordering = ['location_name']
+        
+    @classmethod
+    def by_location(self,location):
+        photos = cls.objects.filter(location)
+        return photos
