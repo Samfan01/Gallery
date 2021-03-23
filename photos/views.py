@@ -8,7 +8,7 @@ def home(request):
     photo = Photo.photo_info()
     locations = Location.by_location()
     
-    return render(request,'index.html',{'photos':photo})
+    return render(request,'index.html',{'photos':photo,'locations':locations})
 
 def search_results(request):
     

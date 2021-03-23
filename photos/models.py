@@ -31,10 +31,10 @@ class Photo(models.Model):
         photos = cls.objects.filter(category__category__icontains =search_term)
         return photos
    
-    # @classmethod
-    # def show_by_location(cls,photo_location):
-    #     photos = cls.objects.filter(photo_location)
-    #     return photos
+    @classmethod
+    def search_by_location(cls,location_name):
+        photos = cls.objects.filter(location_name__location_name__icontains=location_name)
+        return photos
     
 class Category(models.Model):
     category = models.CharField(max_length = 30)
@@ -61,6 +61,8 @@ class Location(models.Model):
         ordering = ['location_name']
         
     @classmethod
-    def by_location(self,location):
-        photos = cls.objects.filter(location)
-        return photos
+    def by_location(cls):
+        locations = cls.objects.all()
+        return locations
+    
+        
