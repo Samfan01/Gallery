@@ -17,3 +17,15 @@ class PhotoTestClass(TestCase):
         self.photo.save_photo()
         photos = Photo.objects.all()
         self.assertTrue(len(photos) > 0)
+        
+class CategoryTestClass(TestCase):
+    
+    def setUp(self):
+        self.category = Category(category = 'social')
+        self.category.save_category()
+        
+class LocationTestClass(TestCase):
+    
+    def setUp(self):
+        self.location = Location(location_name = 'Nairobi')
+        self.location.save_location()
